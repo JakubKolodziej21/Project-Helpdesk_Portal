@@ -13,6 +13,11 @@
 
         public int UserId { get; set; }
 
-        public virtual User Users { get; set; }
-    }
+        //Database Keys
+        public virtual Device Devices { get; set; }
+
+        public virtual Status Statuss { get; set; }
+        public virtual User Users{ get; set; }
+
+         }
 }
