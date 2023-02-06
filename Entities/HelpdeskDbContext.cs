@@ -15,10 +15,7 @@ namespace Project_Helpdesk_Portal.Entities
             modelBuilder.Entity<Ticket>()
                  .Property(t => t.Id)
                  .IsRequired();
-
-           modelBuilder.Entity<Status>()
-                .Property(s => s.Id)
-                .IsRequired();
+                
 
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
