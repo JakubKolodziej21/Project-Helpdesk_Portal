@@ -1,5 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Project_Helpdesk_Portal.Entities
 {
@@ -28,12 +28,12 @@ namespace Project_Helpdesk_Portal.Entities
         public int UserId { get; set; }
 
         [ForeignKey("DeviceId")]
-        public Devices Device { get; set; }
+        public Device Device { get; set; }
 
         [ForeignKey("StatusId")]
-        public Statuss Status { get; set; }
+        public Status Status { get; set; }
 
         [ForeignKey("UserId")]
-        public Users User { get; set; }
+        public User User { get; set; }
     }
 }
