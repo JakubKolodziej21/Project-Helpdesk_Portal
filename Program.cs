@@ -1,10 +1,19 @@
+using Microsoft.EntityFrameworkCore;
+using Project_Helpdesk_Portal.Data;
+using System;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddDbContext<HelpdeskDbContext>(options => options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=HelpdeskDb;Trusted_Connection=True"));
 var app = builder.Build();
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
 
+    SeedData.Initialize(services);
+}
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
