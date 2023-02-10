@@ -1,8 +1,24 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@page
+@model Project_Helpdesk_Portal.Views.Home.IndexModel
+@{
 }
+<br>
+<h2>Lista zgłoszeń:</h2>
+<a class='btn btn-primary btn-sm' href='/Home/Create'>Nowe zgłoszenie</a>
+<table class="table">
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Status</th>
+            <th>Data zgłoszenia</th>
+            <th>Tytuł zgłoszenia</th>
+            <th>Zgłaszający</th>
+           
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+
+</table>
