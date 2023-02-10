@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Project_Helpdesk_Portal.Models
 {
@@ -15,6 +16,7 @@ namespace Project_Helpdesk_Portal.Models
         public string Name { get; set; }
 
         [MaxLength(50)]
+        [Required]
         public string Email { get; set; }
 
         [Required]
