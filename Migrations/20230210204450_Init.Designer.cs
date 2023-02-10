@@ -12,7 +12,7 @@ using Project_Helpdesk_Portal.Data;
 namespace Project_Helpdesk_Portal.Migrations
 {
     [DbContext(typeof(HelpdeskDbContext))]
-    [Migration("20230210170534_Init")]
+    [Migration("20230210204450_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

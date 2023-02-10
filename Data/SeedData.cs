@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Project_Helpdesk_Portal.Models;
-using System;
 
 namespace Project_Helpdesk_Portal.Data
 {
@@ -105,13 +104,31 @@ namespace Project_Helpdesk_Portal.Data
                         IsHelpdeskStaff = true
                     }
                 }
-                
+
                 );
 
-                
+
                 context.SaveChanges();
 
-                
+                context.Statuss.AddRange(
+                    new Status
+                    {
+
+                        Name = "Stopped",
+                        Logo = "Purple",
+                    },
+
+                    new Status
+                    {
+
+                        Name = "IsWaitingForAnswear",
+                        Logo = "Pink",
+                    }
+
+                    );
+                context.SaveChanges();
+
+
             }
         }
 
