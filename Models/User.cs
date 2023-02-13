@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using Project_Helpdesk_Portal.Validation;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 
@@ -16,7 +18,8 @@ namespace Project_Helpdesk_Portal.Models
         public string Name { get; set; }
 
         [MaxLength(50)]
-        [Required]
+        [Required, EmailAddress]
+        [EmailUserUnique]
         public string Email { get; set; }
 
         [Required]
@@ -25,6 +28,7 @@ namespace Project_Helpdesk_Portal.Models
 
         [Required]
         [MaxLength(20)]
+        [UsernameUserUniqueAttribute]
         public string Username { get; set; }
 
         [Required]
