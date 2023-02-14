@@ -1,69 +1,84 @@
 ﻿@model IEnumerable<Project_Helpdesk_Portal.Models.Ticket>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Zgłoszenia";
 }
+<div class="panel panel-default">
+<h1>Lista dostępnych zgłoszeń</h1> <a class='btn btn-success btn-sm' asp-action="Create">Stwórz</a>
 
-<h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+
+
+<table class="table table-striped" style="text-align:center;">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Title)
+                <b>STATUS</b>
+
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                <b>DATA PRZESŁANIA</b>
+
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Created)
+               <b>ID</b> 
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Device)
+                <b>TEMAT</b>
+
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Status)
+                <b>OPIS</b>
+            </th>
+
+            <th>
+                <b>URZĄDZENIE</b>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.User)
+                <a>UŻYTKOWNIK</a>
             </th>
-            <th></th>
+            <th>
+
+            </th>
+
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
+            @foreach (var item in Model)
+            {
+            <tr>
+
+                    <td>
+                        <i class="fa fa-ticket" style="font-size:30px;color: @item.Status.Logo"></i>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Created)
+                    </td>
+                    <td>
+                        #@Html.DisplayFor(modelItem => item.Id)
+                    </td>
                 <td>
-                    #@Html.DisplayFor(modelItem => item.Id)
+                        <a asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a>
                 </td>
                 <td>
-                        <b style="border-radius:2px;padding:5px;color:darkgray;background-color:@item.Status.Logo;box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;" >@Html.DisplayFor(modelItem => item.Status.Name)</b>
+                        @Html.DisplayFor(modelItem => item.Description)
                 </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Created)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Device.Description)
-            </td>
-            
-            <td>
-                @Html.DisplayFor(modelItem => item.User.Email)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+
+                <td>
+                        @Html.DisplayFor(modelItem => item.Device.Description)
+                </td>
+
+                <td>
+                        @Html.DisplayFor(modelItem => item.User.Email)
+                </td>
+                <td >
+                      <p>  <a asp-action="Edit" class='btn btn-primary btn-sm' asp-route-id="@item.Id">Edytuj</a>       </p>
+                      <p>  <a asp-action="Delete" class='btn btn-danger btn-sm' asp-route-id="@item.Id">Usuń</a>       </p>
+                </td>
+            </tr>
+            }
     </tbody>
 </table>
+
+</div>
+

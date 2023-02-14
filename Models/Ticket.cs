@@ -20,13 +20,13 @@ namespace Project_Helpdesk_Portal.Models
         [Required]
         public DateTime Created { get; set; }
 
-        [Required]
+        //[Required]
         public int DeviceId { get; set; }
 
-        [Required]
+        //[Required]
         public int StatusId { get; set; }
 
-        [Required]
+        //[Required]
         public int UserId { get; set; }
 
         [ForeignKey("DeviceId")]

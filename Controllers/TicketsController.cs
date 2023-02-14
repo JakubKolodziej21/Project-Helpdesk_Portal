@@ -51,7 +51,7 @@ namespace Project_Helpdesk_Portal.Controllers
         public IActionResult Create()
         {
             ViewData["DeviceId"] = new SelectList(_context.Devices, "Id", "Description");
-            ViewData["StatusId"] = new SelectList(_context.Statuss, "Id", "Logo");
+            ViewData["StatusId"] = new SelectList(_context.Statuss, "Id", "Name");
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Email");
             return View();
         }
@@ -63,12 +63,9 @@ namespace Project_Helpdesk_Portal.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Title,Description,Created,DeviceId,StatusId,UserId")] Ticket ticket)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(ticket);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
+            _context.Add(ticket);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
             ViewData["DeviceId"] = new SelectList(_context.Devices, "Id", "Description", ticket.DeviceId);
             ViewData["StatusId"] = new SelectList(_context.Statuss, "Id", "Logo", ticket.StatusId);
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Email", ticket.UserId);
@@ -106,7 +103,7 @@ namespace Project_Helpdesk_Portal.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 try
                 {

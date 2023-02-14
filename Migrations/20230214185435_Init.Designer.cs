@@ -12,7 +12,7 @@ using Project_Helpdesk_Portal.Data;
 namespace Project_Helpdesk_Portal.Migrations
 {
     [DbContext(typeof(HelpdeskDbContext))]
-    [Migration("20230213174534_Init")]
+    [Migration("20230214185435_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -73,8 +73,8 @@ namespace Project_Helpdesk_Portal.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 

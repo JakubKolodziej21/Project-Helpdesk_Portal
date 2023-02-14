@@ -19,7 +19,7 @@ namespace Project_Helpdesk_Portal.Models
 
         [MaxLength(50)]
         [Required, EmailAddress]
-        [EmailUserUnique]
+        
         public string Email { get; set; }
 
         [Required]
@@ -28,7 +28,7 @@ namespace Project_Helpdesk_Portal.Models
 
         [Required]
         [MaxLength(20)]
-        [UsernameUserUniqueAttribute]
+        
         public string Username { get; set; }
 
         [Required]

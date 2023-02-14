@@ -32,8 +32,8 @@ namespace Project_Helpdesk_Portal.Data
                     },
                     Status = new Status()
                     {
-                        Name = "New",
-                        Logo = "Green"
+                        Name = "Nowe",
+                        Logo = "#73c976"
                     },
                     User = new User()
                     {
@@ -61,8 +61,8 @@ namespace Project_Helpdesk_Portal.Data
 
                     Status = new Status()
                     {
-                        Name = "Open",
-                        Logo = "Yellow"
+                        Name = "Otwarte",
+                        Logo = "#ff9029"
                     },
 
                     User = new User()
@@ -91,8 +91,8 @@ namespace Project_Helpdesk_Portal.Data
                     },
                     Status = new Status()
                     {
-                        Name = "Cloused",
-                        Logo = "Blue"
+                        Name = "Zamknięte",
+                        Logo = "#86a8ff"
                     },
                     User = new User()
                     {
@@ -114,15 +114,15 @@ namespace Project_Helpdesk_Portal.Data
                     new Status
                     {
 
-                        Name = "Stopped",
-                        Logo = "Purple",
+                        Name = "Zawieszone",
+                        Logo = "#b980ba",
                     },
 
                     new Status
                     {
 
-                        Name = "IsWaitingForAnswear",
-                        Logo = "Pink",
+                        Name = "Oczekujące na odpowiedź",
+                        Logo = "#ff00d1",
                     }
 
                     );
