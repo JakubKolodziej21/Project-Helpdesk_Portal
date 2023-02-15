@@ -1,31 +1,31 @@
 ﻿@model IEnumerable<Project_Helpdesk_Portal.Models.Device>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Urządzenia";
 }
 
-<h1>Index</h1>
+<h1>Urządzenia</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class='btn btn-success btn-sm' asp-action="Create">Stwórz</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+              <b>Identyfikator:</b>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                <b>Opis:</b>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Location)
+               <b>Lokalizacja</b>
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsMobile)
+            <th style="text-align:center;">
+                <b>Urządzenie jest mobilne</b>
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsArchive)
+            <th style="text-align:center;">
+                <b>Zaarchwizowano</b>
             </th>
             <th></th>
         </tr>
@@ -33,8 +33,8 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                <td >
+                    <a asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
@@ -42,16 +42,16 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Location)
             </td>
-            <td>
+                <td style="text-align:center;">
                 @Html.DisplayFor(modelItem => item.IsMobile)
             </td>
-            <td>
+                <td style="text-align:center;">
                 @Html.DisplayFor(modelItem => item.IsArchive)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-action="Edit" class='btn btn-primary btn-sm' asp-route-id="@item.Id">Edytuj</a> |
+                
+                    <a asp-action="Delete" class='btn btn-danger btn-sm' asp-route-id="@item.Id">Usuń</a>
             </td>
         </tr>
 }

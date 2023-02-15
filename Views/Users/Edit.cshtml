@@ -1,12 +1,12 @@
 ﻿@model Project_Helpdesk_Portal.Models.User
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edycja użytkownika";
 }
 
-<h1>Edit</h1>
+<h1>Edycja</h1>
 
-<h4>User</h4>
+<h4>@Model.Name</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -14,44 +14,44 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
+                <label asp-for="Name" class="control-label">Imię & Nazwisko:</label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
+                <label asp-for="Email" class="control-label">Adres E-mail:</label>
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
+                <label asp-for="Password" class="control-label">Hasło:</label>
                 <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Username" class="control-label"></label>
+                <label asp-for="Username" class="control-label">Nazwa użytkownika:</label>
                 <input asp-for="Username" class="form-control" />
                 <span asp-validation-for="Username" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsAdmin" /> @Html.DisplayNameFor(model => model.IsAdmin)
+                    <input class="form-check-input" asp-for="IsAdmin" /> <a>Administrator</a>
                 </label>
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsHelpdeskStaff" /> @Html.DisplayNameFor(model => model.IsHelpdeskStaff)
+                    <input class="form-check-input" asp-for="IsHelpdeskStaff" /> <a>Pracownik IT</a>
                 </label>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Zapisz" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Wróc</a>
 </div>
 
 @section Scripts {

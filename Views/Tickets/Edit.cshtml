@@ -1,12 +1,12 @@
 ﻿@model Project_Helpdesk_Portal.Models.Ticket
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edytuj zgłoszenie";
 }
 
-<h1>Edit</h1>
+<h1>Edytuj zgłoszenie:</h1>
 
-<h4>Ticket</h4>
+<h4>@Model.Title</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -14,44 +14,44 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
+                <label asp-for="Title" class="control-label">Tytuł:</label>
                 <input asp-for="Title" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
+                <label asp-for="Description" class="control-label">Opis:</label>
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Created" class="control-label"></label>
+                <label asp-for="Created" class="control-label">Data utworzenia:</label>
                 <input asp-for="Created" class="form-control" />
                 <span asp-validation-for="Created" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DeviceId" class="control-label"></label>
+                <label asp-for="DeviceId" class="control-label">Urządzenie:</label>
                 <select asp-for="DeviceId" class="form-control" asp-items="ViewBag.DeviceId"></select>
                 <span asp-validation-for="DeviceId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="StatusId" class="control-label"></label>
+                <label asp-for="StatusId" class="control-label">Status:</label>
                 <select asp-for="StatusId" class="form-control" asp-items="ViewBag.StatusId"></select>
                 <span asp-validation-for="StatusId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="UserId" class="control-label"></label>
+                <label asp-for="UserId" class="control-label">Użytkownik:</label>
                 <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
                 <span asp-validation-for="UserId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Zapisz" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Wróć</a>
 </div>
 
 @section Scripts {
