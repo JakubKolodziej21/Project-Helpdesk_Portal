@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Project_Helpdesk_Portal.Data;
 using System;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<HelpdeskDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("HelpdeskConn")));
+
+builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<HelpdeskDbContext>();
 var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
@@ -27,6 +31,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication();;
 
 app.UseAuthorization();
 

@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Project_Helpdesk_Portal.Models;
 using System;
 using System.Collections.Generic;
 
 namespace Project_Helpdesk_Portal.Data
 {
-    public class HelpdeskDbContext : DbContext
+    public class HelpdeskDbContext : IdentityDbContext
     {
         public HelpdeskDbContext(DbContextOptions<HelpdeskDbContext> options) : base(options) { }
         
