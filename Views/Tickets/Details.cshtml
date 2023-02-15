@@ -1,47 +1,41 @@
 ﻿@model Project_Helpdesk_Portal.Models.Ticket
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = @Html.DisplayFor(model => model.Title);
 }
 
-<h1>Details</h1>
+<h1>Szczegóły zgłoszenia: </h1>
 
 <div>
-    <h4>Ticket</h4>
+    <h4> @Html.DisplayFor(model => model.Title)</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
+            <b>Opis: </b>
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Description)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Created)
+            <b>Utworzono: </b>
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Created)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Device)
+           <b>Urządzenie : </b>
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Device.Description)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Status)
+            <b>Status :</b>
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Status.Logo)
+            <b style="color:white; background-color:@Model.Status.Logo; padding:4px; border-radius:3px;">@Html.DisplayFor(model => model.Status.Name)</b>
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.User)
+            <b>Użytkownik :</b>
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.User.Email)
@@ -49,6 +43,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edytuj</a> |
+    <a asp-action="Index">Wróć</a>
 </div>

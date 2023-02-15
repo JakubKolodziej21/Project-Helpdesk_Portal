@@ -67,7 +67,7 @@ namespace Project_Helpdesk_Portal.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
             ViewData["DeviceId"] = new SelectList(_context.Devices, "Id", "Description", ticket.DeviceId);
-            ViewData["StatusId"] = new SelectList(_context.Statuss, "Id", "Logo", ticket.StatusId);
+            ViewData["StatusId"] = new SelectList(_context.Statuss, "Id", "Name", ticket.StatusId);
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Email", ticket.UserId);
             return View(ticket);
         }
@@ -86,7 +86,7 @@ namespace Project_Helpdesk_Portal.Controllers
                 return NotFound();
             }
             ViewData["DeviceId"] = new SelectList(_context.Devices, "Id", "Description", ticket.DeviceId);
-            ViewData["StatusId"] = new SelectList(_context.Statuss, "Id", "Logo", ticket.StatusId);
+            ViewData["StatusId"] = new SelectList(_context.Statuss, "Id", "Name", ticket.StatusId);
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Email", ticket.UserId);
             return View(ticket);
         }
@@ -124,7 +124,7 @@ namespace Project_Helpdesk_Portal.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["DeviceId"] = new SelectList(_context.Devices, "Id", "Description", ticket.DeviceId);
-            ViewData["StatusId"] = new SelectList(_context.Statuss, "Id", "Logo", ticket.StatusId);
+            ViewData["StatusId"] = new SelectList(_context.Statuss, "Id", "Name", ticket.StatusId);
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Email", ticket.UserId);
             return View(ticket);
         }
