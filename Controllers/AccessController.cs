@@ -4,10 +4,11 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Project_Helpdesk_Portal.Models;
+using System.Data.SqlClient;
 
-
-namespace AuthProject.Controllers
+namespace Project_Helpdesk_Portal.Controllers
 {
+
     public class AccessController : Controller
     {
         public IActionResult Login()
@@ -21,40 +22,52 @@ namespace AuthProject.Controllers
             return View();
         }
 
+
         [HttpPost]
         public async Task<IActionResult> Login(User modelLogin)
         {
 
-            if (modelLogin.Email == "root@admin.pl" &&
-                modelLogin.Password == "12341234"
-                )
+            string connString = "Server=(localdb)\\mssqllocaldb;Database=HelpdeskDb;Trusted_Connection=True;TrustServerCertificate=True;";
+            string query = "SELECT COUNT(*) FROM Users WHERE Email = @Email AND Password = @Password";
+
+            using (SqlConnection conn = new SqlConnection(connString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
             {
-                List<Claim> claims = new List<Claim>() {
+                cmd.Parameters.AddWithValue("@Email", modelLogin.Email);
+                cmd.Parameters.AddWithValue("@Password", modelLogin.Password);
+
+                conn.Open();
+                int count = (int)cmd.ExecuteScalar();
+
+                if (count == 1)
+                {
+                    List<Claim> claims = new List<Claim>() {
                     new Claim(ClaimTypes.NameIdentifier, modelLogin.Email),
                     new Claim("OtherProperties","Example Role")
 
                 };
 
-                ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims,
-                    CookieAuthenticationDefaults.AuthenticationScheme);
+                    ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims,
+                        CookieAuthenticationDefaults.AuthenticationScheme);
 
-                AuthenticationProperties properties = new AuthenticationProperties()
-                {
+                    AuthenticationProperties properties = new AuthenticationProperties()
+                    {
 
-                    AllowRefresh = true,
-                    IsPersistent = modelLogin.IsAdmin && modelLogin.IsHelpdeskStaff
-                };
+                        AllowRefresh = true,
+                        IsPersistent = modelLogin.IsAdmin && modelLogin.IsHelpdeskStaff
+                    };
 
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
-                    new ClaimsPrincipal(claimsIdentity), properties);
+                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
+                        new ClaimsPrincipal(claimsIdentity), properties);
 
-                return RedirectToAction("Index", "Tickets");
+                    return RedirectToAction("Index", "Tickets");
+                }
+
+
+
+                ViewData["ValidateMessage"] = "user not found";
+                return View();
             }
-
-
-
-            ViewData["ValidateMessage"] = "user not found";
-            return View();
         }
     }
 }
