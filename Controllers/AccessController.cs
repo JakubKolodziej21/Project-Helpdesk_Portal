@@ -60,6 +60,8 @@ namespace Project_Helpdesk_Portal.Controllers
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                         new ClaimsPrincipal(claimsIdentity), properties);
 
+                    
+
                     return RedirectToAction("Index", "Tickets");
                 }
 

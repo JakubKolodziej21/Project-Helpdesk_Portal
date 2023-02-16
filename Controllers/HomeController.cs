@@ -32,7 +32,7 @@ namespace Project_Helpdesk_Portal.Controllers
         public async Task<IActionResult> LogOut()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Login","Access");
+            return RedirectToAction("Login", "Access");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
