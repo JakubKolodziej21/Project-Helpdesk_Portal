@@ -62,7 +62,7 @@ namespace Project_Helpdesk_Portal.Controllers
 
                     
 
-                    return RedirectToAction("Create", "Tickets");
+                    return RedirectToAction("CreateTicketsUsers", "Tickets");
                 }
                 if (count == 2)
                 {

@@ -74,6 +74,32 @@ namespace Project_Helpdesk_Portal.Controllers
             return View(ticket);
         }
 
+        //Get User Permission
+        
+        public IActionResult CreateTicketsUsers()
+        {
+            ViewData["DeviceId"] = new SelectList(_context.Devices, "Id", "Description");
+            ViewData["StatusId"] = new SelectList(_context.Statuss, "Id", "Name");
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Email");
+            return View();
+        }
+
+        // POST: Tickets/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateTicketsUsers([Bind("Id,Title,Description,Created,DeviceId,StatusId,UserId")] Ticket ticket)
+        {
+            _context.Add(ticket);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(CreateTicketsUsers));
+            ViewData["DeviceId"] = new SelectList(_context.Devices, "Id", "Description", ticket.DeviceId);
+            ViewData["StatusId"] = new SelectList(_context.Statuss, "Id", "Name", ticket.StatusId);
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Email", ticket.UserId);
+            return View(ticket);
+        }
+
         // GET: Tickets/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
