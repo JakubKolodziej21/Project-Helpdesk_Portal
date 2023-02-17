@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Project_Helpdesk_Portal.Models.User>
+
+@{
+    ViewData["Title"] = "Użytkownicy";
+}
+
+<h1>Użytkownicy</h1>
+
+<p>
+    <a class='btn btn-success btn-sm' asp-action="Create">Stwórz nowego użytkownika</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <b>Użytkownik:</b>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                <b>Hasło</b>
+            </th>
+            <th>
+                <b>Nazwa użytkownika</b>
+            </th>
+            <th>
+                <b>Administrator</b>
+            </th>
+            <th>
+                <b>Pracownik IT</b>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                    <input type="password"
+                       name="password"  value="@Html.DisplayFor(modelItem => item.Password)" disabled />
+                    
+                    
+                                      
+                   
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+                <td style="text-align:center;">
+                @Html.DisplayFor(modelItem => item.IsAdmin)
+            </td>
+                <td style="text-align:center;">
+                @Html.DisplayFor(modelItem => item.IsHelpdeskStaff)
+            </td>
+            <td>
+                    <P>  <a asp-action="Edit" class='btn btn-primary btn-sm' asp-route-id="@item.Id">Edytuj</a> </P>
+                    <P>  <a asp-action="Delete" class='btn btn-danger btn-sm' asp-route-id="@item.Id">Usuń</a> </P>
+            </td>
+        </tr>
+            
+}
+    </tbody>
+</table>
+

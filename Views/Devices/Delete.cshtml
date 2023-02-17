@@ -1,0 +1,54 @@
+﻿@model Project_Helpdesk_Portal.Models.Device
+
+@{
+    ViewData["Title"] = "Usuwanie";
+}
+
+<h1>Usuwanie</h1>
+
+<h3>Czy napewno chcesz to na zawsze usunąć ?</h3>
+<h5>(Naprawdę długo!)</h5>
+
+
+<div>
+    
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Identyfikator:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+           Nazwa:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            Lokalizacja:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+        <dt class = "col-sm-2">
+            Urządzenie mobilne:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IsMobile)
+        </dd>
+        <dt class = "col-sm-2">
+            Urządzenie zaarchiwizowane:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IsArchive)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Usuń" class="btn btn-danger" /> |
+        <a asp-action="Index">Wróć</a>
+    </form>
+</div>

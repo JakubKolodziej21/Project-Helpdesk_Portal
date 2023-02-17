@@ -1,0 +1,48 @@
+﻿@model Project_Helpdesk_Portal.Models.Device
+
+@{
+    ViewData["Title"] = "Szczegóły urządzenia";
+}
+
+<h1>Szczegóły urządzenia:</h1>
+
+<div>
+    <h4>@Model.Name</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            <b>Identyfikator:</b>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+           <b>Nazwa:</b>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            <b>Lokalizacja:</b>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+        <dt class = "col-sm-2">
+            <b>Urządzenie mobilne</b>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IsMobile)
+        </dd>
+        <dt class = "col-sm-2">
+           <b>Zaarchiwizowano</b>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IsArchive)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edytuj</a> |
+    <a asp-action="Index">Wróć</a>
+</div>

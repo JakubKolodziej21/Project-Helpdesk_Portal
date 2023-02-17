@@ -1,0 +1,59 @@
+﻿@model Project_Helpdesk_Portal.Models.Ticket
+
+@{
+    ViewData["Title"] = "Usuwanie";
+}
+
+<h1>Usuwanie</h1>
+
+<h3>Czy napewno chcesz to na zawsze usunąć ?</h3>
+<h5>(Naprawdę długo!)</h5>
+<br />  
+<div>
+    <h4>Zgłoszenia</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            <b>Tytuł: </b>
+        </dt>
+        <dd class = "col-sm-10">
+         @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class = "col-sm-2">
+            <b>Opis: </b>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            <b>Data utworzenia: </b>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Created)
+        </dd>
+        <dt class = "col-sm-2">
+            <b>Urządzenie :</b>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Device.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            <b>Status: </b>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Status.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            <b>Użytkownik: </b>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.User.Email)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Usuń" class="btn btn-danger" /> |
+        <a asp-action="Index">Wróć</a>
+    </form>
+</div>

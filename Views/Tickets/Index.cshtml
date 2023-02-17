@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Project_Helpdesk_Portal.Models.Ticket>
+
+@{
+    ViewData["Title"] = "Zgłoszenia";
+}
+<div class="panel panel-default">
+<h1>Lista dostępnych zgłoszeń</h1> <a class='btn btn-success btn-sm' asp-action="Create">Stwórz</a>
+
+
+
+
+<table class="table table-striped" style="text-align:center;">
+    <thead>
+        <tr>
+            <th>
+                <b>STATUS</b>
+
+            </th>
+            <th>
+                <b>DATA PRZESŁANIA</b>
+
+            </th>
+            <th>
+               <b>ID</b> 
+            </th>
+            <th>
+                <b>TEMAT</b>
+
+            </th>
+            <th>
+                <b>OPIS</b>
+            </th>
+
+            <th>
+                <b>URZĄDZENIE</b>
+            </th>
+            <th>
+                <a>UŻYTKOWNIK</a>
+            </th>
+            <th>
+
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+
+                    <td>
+                        <i class="fa fa-ticket" style="font-size:30px;color: @item.Status.Logo"></i>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Created)
+                    </td>
+                    <td>
+                        #@Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                <td>
+                        <a asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a>
+                </td>
+                <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                </td>
+
+                <td>
+                        @Html.DisplayFor(modelItem => item.Device.Description)
+                </td>
+
+                <td>
+                        @Html.DisplayFor(modelItem => item.User.Email)
+                </td>
+                <td >
+                      <p>  <a asp-action="Edit" class='btn btn-primary btn-sm' asp-route-id="@item.Id">Edytuj</a>       </p>
+                      <p>  <a asp-action="Delete" class='btn btn-danger btn-sm' asp-route-id="@item.Id">Usuń</a>       </p>
+                </td>
+            </tr>
+            }
+    </tbody>
+</table>
+
+</div>
+

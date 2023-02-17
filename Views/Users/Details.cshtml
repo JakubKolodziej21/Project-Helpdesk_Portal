@@ -1,0 +1,81 @@
+﻿@model Project_Helpdesk_Portal.Models.User
+
+@{
+    ViewData["Title"] = "Szczegóły";
+}
+
+<h1>Szczegóły użytkownika:</h1>
+
+<div>
+    <h4>@Model.Name</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            <b>Imię & Nazwisko</b>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            <b>Adres E-mail:</b>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class = "col-sm-2">
+            <b>Hasło:</b>
+            
+            
+        </dt>
+        <dd class = "col-sm-10">
+            <input type="password"
+                   name="password" id="password" value="@Html.DisplayFor(model => model.Password)" />
+            <i class="bi bi-eye-slash"
+               id="togglePassword"></i>
+            
+        </dd>
+        <dt class = "col-sm-2">
+           <b>Nazwa użytkownika</b>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Username)
+        </dd>
+        <dt class = "col-sm-2">
+            <b>Administrator</b>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IsAdmin)
+        </dd>
+        <dt class = "col-sm-2">
+            <b>Pracownik IT</b>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IsHelpdeskStaff)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edytuj</a> |
+    <a asp-action="Index">Wróć</a>
+</div>
+
+<script>
+    const togglePassword = document
+        .querySelector('#togglePassword');
+
+    const password = document.querySelector('#password');
+
+    togglePassword.addEventListener('click', () => {
+
+        // Toggle the type attribute using
+        // getAttribure() method
+        const type = password
+            .getAttribute('type') === 'password' ?
+            'text' : 'password';
+
+        password.setAttribute('type', type);
+
+        // Toggle the eye and bi-eye icon
+        this.classList.toggle('bi-eye');
+    });
+</script>

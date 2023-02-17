@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Project_Helpdesk_Portal.Models.Device>
+
+@{
+    ViewData["Title"] = "Urządzenia";
+}
+
+<h1>Urządzenia</h1>
+
+<p>
+    <a class='btn btn-success btn-sm' asp-action="Create">Stwórz</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+              <b>Identyfikator:</b>
+            </th>
+            <th>
+                <b>Opis:</b>
+            </th>
+            <th>
+               <b>Lokalizacja</b>
+            </th>
+            <th style="text-align:center;">
+                <b>Urządzenie jest mobilne</b>
+            </th>
+            <th style="text-align:center;">
+                <b>Zaarchwizowano</b>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td >
+                    <a asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+                <td style="text-align:center;">
+                @Html.DisplayFor(modelItem => item.IsMobile)
+            </td>
+                <td style="text-align:center;">
+                @Html.DisplayFor(modelItem => item.IsArchive)
+            </td>
+            <td>
+                    <a asp-action="Edit" class='btn btn-primary btn-sm' asp-route-id="@item.Id">Edytuj</a> |
+                
+                    <a asp-action="Delete" class='btn btn-danger btn-sm' asp-route-id="@item.Id">Usuń</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
