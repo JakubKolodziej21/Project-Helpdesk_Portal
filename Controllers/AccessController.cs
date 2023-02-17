@@ -99,7 +99,7 @@ namespace Project_Helpdesk_Portal.Controllers
 
 
 
-                ViewData["ValidateMessage"] = "user not found";
+                ViewData["ValidateMessage"] = "Hasło lub adres E-mail są niaprawidłowe";
                 return View();
             }
         }
