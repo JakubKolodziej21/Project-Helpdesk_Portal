@@ -4,8 +4,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project-Helpdesk_Portal", "Project-Helpdesk_Portal.csproj", "{AE560484-F904-48F3-94FF-47BD24B1763E}"
+
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitsTest", "..\UnitsTest\UnitsTest.csproj", "{FE746929-EC30-4783-A93D-4556F2D710CE}"
+
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
